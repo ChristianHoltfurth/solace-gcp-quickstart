@@ -109,6 +109,7 @@ systemctl start docker | tee -a ${LOG_FILE}
 
 echo "`date` INFO:Set up swap for < 6GB machines" | tee -a ${LOG_FILE}
 # -----------------------------------------
+cat /proc/meminfo | grep MemTotal
 MEM_SIZE=`cat /proc/meminfo | grep MemTotal | tr -dc '0-9'` | tee -a ${LOG_FILE}
 if [ ${MEM_SIZE} -lt 6087960 ]; then
   echo "`date` WARN: Not enough memory: ${MEM_SIZE} Creating 2GB Swap space" | tee -a ${LOG_FILE}
