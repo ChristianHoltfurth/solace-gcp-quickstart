@@ -109,8 +109,7 @@ systemctl start docker | tee -a ${LOG_FILE}
 
 echo "`date` INFO:Set up swap for < 6GB machines" | tee -a ${LOG_FILE}
 # -----------------------------------------
-cat /proc/meminfo | grep MemTotal
-MEM_SIZE=$(cat /proc/meminfo | grep MemTotal | sed 's/[^0-9]*//g') | tee -a ${LOG_FILE}
+MEM_SIZE=$(cat /proc/meminfo | grep MemTotal | sed 's/[^0-9]*//g')
 if [ ${MEM_SIZE} -lt 6087960 ]; then
   echo "`date` WARN: Not enough memory: ${MEM_SIZE} Creating 2GB Swap space" | tee -a ${LOG_FILE}
   mkdir /var/lib/solace | tee -a ${LOG_FILE}
