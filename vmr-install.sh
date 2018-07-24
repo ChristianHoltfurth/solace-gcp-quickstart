@@ -119,7 +119,7 @@ if [ ${MEM_SIZE} -lt 6087960 ]; then
   swapon -f /var/lib/solace/swap | tee -a ${LOG_FILE}
   grep -q 'solace\/swap' /etc/fstab || sudo sh -c 'echo "/var/lib/solace/swap none swap sw 0 0" >> /etc/fstab' | tee -a ${LOG_FILE}
 else
-   echo "`date` INFO: Memory size is ${MEM_SIZE}" | tee -a ${LOG_FILE}
+   echo "`date` INFO: Memory size is " ${MEM_SIZE} | tee -a ${LOG_FILE}
 fi
 
 echo "`date` Format persistent volume" | tee -a ${LOG_FILE}
